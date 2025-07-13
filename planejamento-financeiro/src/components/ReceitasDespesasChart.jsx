@@ -11,17 +11,17 @@ const data = [
 
 const ReceitasDespesasChart = () => {
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h2 className="text-center text-lg font-semibold mb-2">Receitas vs Despesas</h2>
-      <ResponsiveContainer width="100%" height={250}>
+    <div className="chart-container">
+      <h2 className="chart-title">Receitas vs Despesas</h2>
+      <ResponsiveContainer width="100%" height={320}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="mes" />
           <YAxis />
           <Tooltip />
-          <Legend />
-          <Bar dataKey="receita" fill="#4CAF50" barSize={30} />
-          <Bar dataKey="despesa" fill="#F44336" barSize={30} />
+          <Legend verticalAlign="bottom" align="center" iconType="rect" />
+          <Bar dataKey="receita" fill="#4CAF50" barSize={40} name="receita" />
+          <Bar dataKey="despesa" fill="#F44336" barSize={40} name="despesa" />
         </BarChart>
       </ResponsiveContainer>
     </div>

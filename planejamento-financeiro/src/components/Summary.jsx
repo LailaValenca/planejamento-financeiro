@@ -26,9 +26,7 @@ function Summary({ transactions }) {
   return (
     isVisible && (
       <div className="summary-card">
-        <button className="close-btn" onClick={() => setIsVisible(false)}>
-          ✖
-        </button>
+        
         <h2>Resumo Financeiro</h2>
         <div className="summary-values">
           <div>Saldo: R$ {balance.toFixed(2)}</div>
