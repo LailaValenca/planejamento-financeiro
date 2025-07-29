@@ -3,12 +3,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
-/* Configuração do corpo da página */
 body {
-  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -16,7 +14,16 @@ body {
   padding: 40px 0;
 }
 
-/* Container principal */
+body.theme-light {
+  background: #EEF4F2;
+  color: #233656;
+}
+
+body.theme-dark {
+  background: #233656;
+  color: #EEF4F2;
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -24,17 +31,15 @@ body {
   width: 100%;
 }
 
-/* Título principal */
 .main-title {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin: 40px 0 30px 0;
-  color: #555;
   letter-spacing: 1px;
   text-align: center;
+  color: inherit;
 }
 
-/* Estrutura do container geral */
 .container {
   display: flex;
   flex-direction: row;
@@ -45,7 +50,6 @@ body {
   width: 100%;
 }
 
-/* Formulário à esquerda */
 .form-section {
   flex: 1;
   max-width: 320px;
@@ -55,7 +59,6 @@ body {
   margin-top: 10px;
 }
 
-/* Formulário */
 .form-container {
   margin-top: 0;
   display: flex;
@@ -64,20 +67,20 @@ body {
   max-width: 320px;
 }
 
-/* Inputs e selects do formulário */
 .form-container input, 
 .form-container select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #7B9BA6;
   border-radius: 5px;
   font-size: 1rem;
+  background: #fff;
+  color: #233656;
 }
 
-/* Botão do formulário */
 .form-container button {
-  background: black;
-  color: white;
+  background: #233656;
+  color: #fff;
   border: none;
   padding: 14px 0;
   border-radius: 25px;
@@ -90,31 +93,24 @@ body {
 }
 
 .form-container button:hover {
-  background: #222;
+  background: #415B76;
 }
 
-/* Lista de transações */
 .transaction-list {
-  background: none;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
   margin-top: 30px;
-  margin-left: 0;
   width: 100%;
 }
 
 .transaction-item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0;
-  margin: 0 0 10px 0;
   background: none;
-  border-radius: 0;
-  box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
   font-size: 1.15rem;
-  color: #222;
+  color: inherit;
+  padding: 6px 10px;
+  border-radius: 5px;
 }
 
 .transaction-item span {
@@ -123,10 +119,9 @@ body {
 
 .transaction-item button {
   background: none;
-  color: #111;
+  color: inherit;
   border: none;
   margin-left: 10px;
-  padding: 0;
   font-size: 1.2rem;
   cursor: pointer;
   transition: color 0.2s;
@@ -136,30 +131,29 @@ body {
   color: #ff4757;
 }
 
-/* Card do resumo financeiro */
 .summary-card {
-  background: linear-gradient(135deg, #3A0CA3, #7209B7);
+  background: #233656;
   padding: 30px 20px;
-  margin: 0 auto;
   border-radius: 15px;
-  box-shadow: 10px 10px 0 0 #88888855;
+  box-shadow: 10px 10px 0 0 #88888833;
   text-align: center;
-  color: white;
+  color: #fff;
   max-width: 500px;
   width: 100%;
   position: relative;
+}
+
+.theme-dark .summary-card {
+  background: #415B76;
 }
 
 .summary-card h2 {
   font-size: 2rem;
   font-weight: bold;
   margin: 20px 0 30px 0;
-  font-family: 'Poppins', sans-serif;
   letter-spacing: 1px;
 }
 
-
-/* Área dos valores do resumo financeiro */
 .summary-values {
   display: flex;
   justify-content: center;
@@ -167,52 +161,100 @@ body {
   margin: 10px 0 30px 0;
 }
 
-/* Estilização dos valores do resumo */
 .summary-values div {
-  border: 1px solid white;
+  border: 1px solid #EEF4F2;
   padding: 5px 10px;
   border-radius: 5px;
+  color: #fff;
 }
 
-/* Chart container */
 .chart-container {
   margin-top: 20px;
   background: #fff;
   padding: 10px 20px 0 10px;
   border-radius: 8px;
-  box-shadow: none;
   width: 700px;
   max-width: 100%;
+  color: #233656;
 }
 
 .chart-title {
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 0;
-  margin-left: 0;
-  color: #111;
+  color: #233656;
   text-align: left;
-  text-shadow: none;
   letter-spacing: -1px;
 }
 
-.recharts-legend-wrapper {
-  bottom: 0 !important;
-  left: 50% !important;
-  transform: translateX(-50%);
-}
-
-.chart-container svg {
-  max-width: 100%;
-}
-
-/* Preview label */
 .preview-label {
   color: #bbb;
   font-size: 1rem;
   margin-left: 30px;
   margin-bottom: 5px;
-  font-family: 'Poppins', sans-serif;
+}
+
+.theme-switch {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 56px;
+  height: 28px;
+  background: #233656;
+  border-radius: 20px;
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 1000;
+  border: 2px solid #415B76;
+  transition: background 0.3s;
+}
+
+.theme-switch.light {
+  background: #EEF4F2;
+  border: 2px solid #7B9BA6;
+}
+
+.theme-switch .switch-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.theme-switch .switch-icon.sun {
+  left: 8px;
+  color: #FFD700;
+}
+
+.theme-switch .switch-icon.moon {
+  right: 8px;
+  color: #CDD6D5;
+}
+
+.theme-switch .switch-ball {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.3s, background 0.3s, border 0.3s;
+  box-shadow: 0 1px 4px #0002;
+}
+
+.theme-switch.light .switch-ball {
+  left: 32px;
+  background: #fff;
+  border: 2px solid #7B9BA6;
+}
+
+.theme-switch.dark .switch-ball {
+  left: 4px;
+  background: #233656;
+  border: 2px solid #EEF4F2;
 }
 
 /* Responsividade */
@@ -235,4 +277,60 @@ body {
   .chart-title {
     font-size: 1.3rem;
   }
+}
+
+.theme-dark .form-container,
+.theme-dark .transaction-item,
+.theme-dark .chart-container {
+  background: none !important;
+  color: #EEF4F2 !important;
+}
+
+.theme-dark .form-container input,
+.theme-dark .form-container select {
+  background: #7B9BA6;
+  color: #233656;
+  border: 1px solid #EEF4F2;
+}
+
+.theme-dark .form-container button {
+  background: #CDD6D5;
+  color: #233656;
+}
+
+.theme-dark .transaction-item {
+  background: none !important;
+  color: #EEF4F2 !important;
+}
+
+.theme-dark .transaction-item button {
+  color: #EEF4F2;
+}
+
+.download-button {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #233656;
+  color: white !important;
+  border-radius: 25px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.download-button:hover {
+  background: #415B76;
+}
+
+body.theme-dark .download-button {
+  background: #7B9BA6;
+  color: #233656 !important;
+}
+
+body.theme-dark .download-button:hover {
+  background: #CDD6D5;
 }
