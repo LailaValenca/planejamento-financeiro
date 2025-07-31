@@ -11,27 +11,59 @@ function App() {
 
   // Carregar transações do backend ao iniciar
   useEffect(() => {
+    console.log('Carregando transações do backend...');
     axios.get("http://localhost:3001/transactions")
-      .then(res => setTransactions(res.data))
-      .catch(() => setTransactions([]));
+      .then(res => {
+        console.log('Transações recebidas do backend:', res.data);
+        setTransactions(res.data);
+      })
+      .catch(error => {
+        console.error('Erro ao carregar transações:', error);
+        setTransactions([]);
+      });
   }, []);
 
   // Adicionar transação no backend e atualizar lista
   const addTransaction = (transaction) => {
+    console.log('Adicionando transação:', transaction);
     axios.post("http://localhost:3001/transactions", transaction)
-      .then(res => setTransactions([...transactions, res.data]));
+      .then(res => {
+        console.log('Transação criada:', res.data);
+        setTransactions([...transactions, res.data]);
+      })
+      .catch(error => {
+        console.error('Erro ao adicionar transação:', error);
+      });
   };
 
   // Remover transação no backend e atualizar lista
   const deleteTransaction = (id) => {
+    console.log('=== INICIANDO DELETE ===');
+    console.log('ID para deletar:', id, 'Tipo:', typeof id);
+    console.log('Transações atuais:', transactions);
+    
     axios.delete(`http://localhost:3001/transactions/${id}`)
-      .then(() => setTransactions(transactions.filter(t => t.id !== id)));
+      .then((response) => {
+        console.log('DELETE bem-sucedido, status:', response.status);
+        const newTransactions = transactions.filter(t => t.id !== id);
+        console.log('Novas transações após filtro:', newTransactions);
+        setTransactions(newTransactions);
+      })
+      .catch(error => {
+        console.error('Erro ao deletar transação:', error);
+        if (error.response) {
+          console.error('Status da resposta:', error.response.status);
+          console.error('Dados da resposta:', error.response.data);
+        }
+      });
   };
 
   useEffect(() => {
     document.body.classList.remove("theme-light", "theme-dark");
     document.body.classList.add(`theme-${theme}`);
   }, [theme]);
+
+  console.log('Renderizando App com', transactions.length, 'transações');
 
   return (
     <>
@@ -75,8 +107,6 @@ function App() {
         </a>
         </div>
       </div>
-      
-
     </>
   );
 }
